@@ -35,6 +35,34 @@ void Reverse(struct Array *arr){
     }
 }
 
+// Left Shift (the first element is removed):
+void LShift(struct Array *arr){
+    for(int i=0;i<arr->length-1;i++) swap(&arr->A[i],&arr->A[i+1]);
+    arr->A[arr->length-1]=0;
+}
+
+// Left Roatate (the first element becomes last element):
+void LRotate(struct Array *arr){
+    int x;
+    x=arr->A[0];
+    for(int i=0;i<arr->length-1;i++) swap(&arr->A[i],&arr->A[i+1]);
+    arr->A[arr->length-1]=x;
+}
+
+// Right Shift (the last element is removed):
+void RShift(struct Array *arr){
+    for(int i=arr->length-1;i>0;i--) swap(&arr->A[i],&arr->A[i-1]);
+    arr->A[0]=0;
+}
+
+// Right Rotate (the last element becomes first element):
+void RRotate(struct Array *arr){
+    int x;
+    x=arr->A[arr->length-1];
+    for(int i=arr->length-1;i>0;i--) swap(&arr->A[i],&arr->A[i-1]);
+    arr->A[0]=x;
+}
+
 int main(){
     struct Array arr;
     int n,index,x;
@@ -52,6 +80,14 @@ int main(){
     Reverse_AA(&arr);
     Display(arr);
     Reverse(&arr);
+    Display(arr);
+    LShift(&arr);
+    Display(arr);
+    LRotate(&arr);
+    Display(arr);
+    RShift(&arr);
+    Display(arr);
+    RRotate(&arr);
     Display(arr);
 
     return 0;
