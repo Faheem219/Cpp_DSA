@@ -20,7 +20,18 @@ class Matrix{
         void Set(int i, int j, int x);
         T Get(int i, int j);
         void Display();
+        int GetDimension(){return size;}
+        void Create();
 };
+
+template<class T>
+void Matrix<T>::Create(){
+    cout<<"\nEnter the elements of the diagonal matrix: ";
+    for(int i=1;i<=size;i++){
+        cout<<"Enter element at index ("<<i<<","<<i<<"): ";
+        cin>>A[i-1];
+    }
+}
 
 template<class T>
 void Matrix<T>::Set(int i, int j, int x){
@@ -50,11 +61,7 @@ int main(){
     cin>>sz;
     Matrix<int> M(sz);
     cout<<"\nEnter all diagonal elements:\n";
-    for(int i=0; i<sz; i++){
-        cout<<"\nEnter value of ("<<i+1<<","<<i+1<<")th element: ";
-        cin>>x;
-        M.Set(i+1,i+1,x);
-    }
+    M.Create();
     cout<<"\nDiagonal matrix is: \n";
     M.Display();
     cout<<"\n"<<M.Get(3,3);

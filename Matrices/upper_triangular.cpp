@@ -21,7 +21,21 @@ class Matrix{
         T Get(int i, int j);
         void Display();
         int GetDimension(){return n;}
+        void Create();
 };
+
+template<class T>
+void Matrix<T>::Create(){
+    cout<<"\nEnter the elements of the matrix: ";
+    for(int i=1;i<=n;i++){
+        for(int j=1;j<=n;j++){
+            if(i<=j){
+                cout<<"Enter element at index ("<<i<<","<<j<<"): ";
+                cin>>A[(i-1)*n - (i-2)*(i-1)/2 + (j-i)];
+            }
+        }
+    }
+}
 
 template<class T>
 void Matrix<T>::Display(){
@@ -55,15 +69,7 @@ int main(){
     cin>>sz;
     Matrix<int> M(sz);
     cout<<"\nEnter all elements:\n";
-    for(int i=1; i<=sz;i++){
-        for(int j=1;j<=sz;j++){
-            if(i<=j){
-                cout<<"\nEnter value of ("<<i<<","<<j<<")th element: ";
-                cin>>x;
-                M.Set(i,j,x);
-            }
-        }
-    }
+    M.Create();
     M.Display();
     cout<<"\n"<<M.Get(3,3);
     return 0;

@@ -21,7 +21,22 @@ class Matrix{
         T Get(int i, int j);
         void Display();
         int GetDimension(){return n;}
+        void Create();
 };
+
+template<class T>
+void Matrix<T>::Create(){
+    cout<<"\nEnter the elements of the first row: ";
+    for(int j=1;j<=n;j++){
+        cout<<"Enter element at index (0,"<<j<<"): ";
+        cin>>A[j-1];
+    }
+    cout<<"\nEnter the elements of the first column: ";
+    for(int i=2;i<=n;i++){
+        cout<<"Enter element at index ("<<i<<",0): ";
+        cin>>A[n+i-2];
+    }
+}
 
 template<class T>
 void Matrix<T>::Display(){
@@ -51,18 +66,7 @@ int main(){
     cout<<"\nEnter the dimension of the matrix: "<<endl;
     cin>>sz;
     Matrix<int> M(sz);
-    cout<<"\nEnter the elements of the first row: ";
-    for(int j=1;j<=sz;j++){
-        cout<<"Enter element at index (0,"<<j<<"): ";
-        cin>>x;
-        M.Set(1,j,x);
-    }
-    cout<<"\nEnter the elements of the first column: ";
-    for(int i=2;i<=sz;i++){
-        cout<<"Enter element at index ("<<i<<",0): ";
-        cin>>x;
-        M.Set(i,1,x);
-    }
+    M.Create();
     M.Display();
     return 0;
 }

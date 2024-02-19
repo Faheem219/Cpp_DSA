@@ -21,7 +21,27 @@ class Matrix{
         T Get(int i, int j);
         void Display();
         int GetDimension(){return n;}
+        void Create();
 };
+
+template<class T>
+void Matrix<T>::Create(){
+    cout<<"\nEnter the elements of the main diagonal: ";
+    for(int i=1;i<=n;i++){
+        cout<<"Enter element at index ("<<i<<","<<i<<"): ";
+        cin>>A[n-1+i-1];
+    }
+    cout<<"\nEnter the elements of the sub-diagonal: ";
+    for(int i=1;i<=n-1;i++){
+        cout<<"Enter element at index ("<<i+1<<","<<i<<"): ";
+        cin>>A[i-1];
+    }
+    cout<<"\nEnter the elements of the super-diagonal: ";
+    for(int i=1;i<=n-1;i++){
+        cout<<"Enter element at index ("<<i<<","<<i+1<<"): ";
+        cin>>A[2*n-1+i-1];
+    }
+}
 
 template<class T>
 void Matrix<T>::Display(){
@@ -58,25 +78,7 @@ int main(){
     cin>>sz;
     Matrix<int> M(sz);
     cout<<"\nEnter all elements:\n";
-    for(int i=1; i<=sz;i++){
-        for(int j=1;j<=sz;j++){
-            if(i==j){
-                cout<<"Enter element at index ("<<i<<","<<j<<"): ";
-                cin>>x;
-                M.Set(i,j,x);
-            }
-            else if(i-j==1){
-                cout<<"Enter element at index ("<<i<<","<<j<<"): ";
-                cin>>x;
-                M.Set(i,j,x);
-            }
-            else if(j-i==1){
-                cout<<"Enter element at index ("<<i<<","<<j<<"): ";
-                cin>>x;
-                M.Set(i,j,x);
-            }
-        }
-    }
+    M.Create();
     M.Display();
     return 0;
 }
