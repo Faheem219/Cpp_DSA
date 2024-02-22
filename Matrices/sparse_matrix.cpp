@@ -1,12 +1,18 @@
 #include <iostream>
 using namespace std;
 
+// Sparse matrix is a matrix in which most of the elements are zero.
+
 struct Elements{
     int i;
     int j;
     int x;
 };
 
+// Sparse matrix can be represented using 3-tuple (i,j,x) where i is the row index, 
+// j is the column index and x is the value of the element at (i,j)
+// This method of representing a sparse matrix is called 3-column representation or
+// coordinate list (COO), there is another method called compressed sparse row (CSR).
 struct Sparse{
     int m;
     int n;
