@@ -1,30 +1,29 @@
+// calculator using switch case
 #include <stdio.h>
-#include <string.h>
+int main(){
 
-void reverseString(char str[]) {
-    int length = strlen(str);
-    int i, j;
-    char temp;
-
-    for (i = 0, j = length - 1; i < j; i++, j--) {
-        temp = str[i];
-        str[i] = str[j];
-        str[j] = temp;
+    int a;
+    printf("enter first number:");
+    scanf("%d", &a);
+    int b;
+    printf("enter the second number:");
+    scanf("%d", &b);
+    char ch;
+    printf("enter the opreator:");
+    scanf(" %c",&ch);
+    switch(ch){
+    case '+':
+        printf("%d", a + b);
+        break;
+    case '-':
+        printf("%d", a - b);
+        break;
+    case '*':
+        printf("%d", a * b);
+        break;
+    case '/':
+        printf("%d", a / b);
+        break;
+    default:
     }
-}
-
-int main() {
-    char str[100];
-
-    printf("Enter a string: ");
-    fgets(str, sizeof(str), stdin);
-
-    // Remove the newline character from the input
-    str[strcspn(str, "\n")] = '\0';
-
-    reverseString(str);
-
-    printf("Reversed string: %s\n", str);
-
-    return 0;
 }
